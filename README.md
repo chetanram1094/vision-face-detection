@@ -7,6 +7,7 @@ Face detection with react native vision camera
 ```sh
 npm install vision-face-detection
 npm install react-native-vision-camera
+npm install react-native-worklets-core
 ```
 
 ## Usage
