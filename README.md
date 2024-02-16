@@ -13,6 +13,7 @@ npm install react-native-worklets-core
 ## Usage
 
 ```js
+babel.config.js
 module.exports = {
   ....
   plugins: [
