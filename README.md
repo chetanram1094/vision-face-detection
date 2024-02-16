@@ -13,6 +13,14 @@ npm install react-native-worklets-core
 ## Usage
 
 ```js
+module.exports = {
+  ....
+  plugins: [
+    ['react-native-worklets-core/plugin'],
+  ....
+```
+
+```js
 import * as React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import {
