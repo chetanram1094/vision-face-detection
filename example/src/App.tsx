@@ -8,24 +8,14 @@ import {
 } from 'react-native-vision-camera';
 import { scanFaces } from 'vision-face-detection';
 import { useIsForeground } from './useIsForeground';
-import { usePreferredCameraDevice } from './usePreferredCameraDevice';
 import 'react-native-worklets-core';
 export default function App() {
-  const [preferredDevice] = usePreferredCameraDevice();
-  let device = useCameraDevice('front');
-
-  if (preferredDevice != null && preferredDevice.position === 'front') {
-    // override default device with the one selected by the user in settings
-    device = preferredDevice;
-  }
+  const device = useCameraDevice('front');
 
   const camera = React.useRef<Camera>(null);
   const [targetFps] = React.useState(30);
 
-  const format = useCameraFormat(device, [
-    { pixelFormat: 'yuv' },
-    { fps: targetFps },
-  ]);
+  const format = useCameraFormat(device, [{ fps: targetFps }]);
 
   const isForeground = useIsForeground();
   const isActive = isForeground;
@@ -63,7 +53,7 @@ export default function App() {
         device={device}
         photo={true}
         isActive={isActive}
-        orientation={'portrait'}
+        // outputOrientation={'device'}
         pixelFormat="yuv"
         format={format}
         fps={targetFps}

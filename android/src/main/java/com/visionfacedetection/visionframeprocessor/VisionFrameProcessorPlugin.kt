@@ -8,6 +8,7 @@ import android.graphics.Rect
 import android.hardware.camera2.CameraCharacteristics
 import android.hardware.camera2.CameraManager
 import android.media.Image
+import android.util.Log
 import android.util.Pair
 import android.util.SparseIntArray
 import com.facebook.react.ReactActivity
@@ -26,14 +27,12 @@ import com.google.mlkit.vision.face.FaceContour
 import com.google.mlkit.vision.face.FaceDetection
 import com.google.mlkit.vision.face.FaceDetector
 import com.google.mlkit.vision.face.FaceDetectorOptions
-import com.mrousavy.camera.frameprocessor.Frame
-import com.mrousavy.camera.frameprocessor.FrameProcessorPlugin
-import com.mrousavy.camera.frameprocessor.FrameProcessorPluginRegistry
-import com.mrousavy.camera.frameprocessor.VisionCameraProxy
+import com.mrousavy.camera.frameprocessors.Frame
+import com.mrousavy.camera.frameprocessors.FrameProcessorPlugin
+import com.mrousavy.camera.frameprocessors.VisionCameraProxy
 
 
-class VisionFrameProcessorPlugin(val proxy: VisionCameraProxy, val options: Map<String, Any>?) :
-  FrameProcessorPlugin() {
+class VisionFrameProcessorPlugin(proxy: VisionCameraProxy, options: Map<String, Any>?): FrameProcessorPlugin() {
 
   companion object {
     private var reactContext: ReactApplicationContext? = null
@@ -44,7 +43,6 @@ class VisionFrameProcessorPlugin(val proxy: VisionCameraProxy, val options: Map<
     }
 
   }
-
   var faceOptions = FaceDetectorOptions.Builder()
     .setPerformanceMode(FaceDetectorOptions.PERFORMANCE_MODE_FAST)
     .setContourMode(FaceDetectorOptions.CONTOUR_MODE_ALL)
@@ -167,6 +165,7 @@ class VisionFrameProcessorPlugin(val proxy: VisionCameraProxy, val options: Map<
   }
 
   override fun callback(frame: Frame, arguments: Map<String, Any>?): Any? {
+
     // code goes here
     var cameraType = "front";
     if (arguments != null && arguments.isNotEmpty()) {
