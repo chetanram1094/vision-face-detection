@@ -1,6 +1,6 @@
 {
   "name": "vision-face-detection",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "vision camera and google ml kit face detection",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
