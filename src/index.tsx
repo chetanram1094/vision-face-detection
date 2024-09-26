@@ -1,6 +1,9 @@
 import { VisionCameraProxy, type Frame } from 'react-native-vision-camera';
 
-const plugin = VisionCameraProxy.initFrameProcessorPlugin('scanFaces');
+const plugin = VisionCameraProxy.initFrameProcessorPlugin('scanFaces', {
+  cameraId: 1,
+  cameraType: 'front',
+});
 declare type Point = {
   x: number;
   y: number;
