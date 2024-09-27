@@ -11,7 +11,7 @@ import {scanFaces} from 'vision-face-detection';
 import {useIsForeground} from './useIsForeground';
 import 'react-native-worklets-core';
 export default function App() {
-  const device = useCameraDevice('back');
+  const device = useCameraDevice('front');
 
   const camera = React.useRef<Camera>(null);
   const [targetFps] = React.useState(30);
